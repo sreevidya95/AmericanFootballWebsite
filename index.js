@@ -1,6 +1,8 @@
 'use strict';
 window.onload=function(){
     footballDropDownList();
+    let abtn=  document .getElementById('abtn');
+    abtn.onclick=abtnClicked;
 }
 function footballDropDownList(){
     let teams = [
@@ -23,7 +25,15 @@ function footballDropDownList(){
       ];
       let select=document.getElementById("footballTeams");
    for(let i=0;i<teams.length;i++){
-    let option = new Option(teams[i].name+"-"+teams[i].teamcode);
+    let option = new Option();
+     option.text=teams[i].name;
+     option.value=teams[i].teamcode;
       select.appendChild(option);
    }      
+}
+function abtnClicked(){
+    let selectOpt = document.getElementById('footballTeams');
+    let value = selectOpt.value;
+    let index=selectOpt.selectedIndex;
+   document.getElementById('mess').innerHTML="You selected the "+selectOpt[index].text+'\t('+value+")";
 }
