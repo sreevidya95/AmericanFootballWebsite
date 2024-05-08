@@ -1,4 +1,9 @@
 'use strict';
+let select=document.getElementById('footballTeams');
+    let opt= new Option();
+    opt.text="select a team";
+    opt.value="";
+    select.appendChild(opt);
 window.onload=function(){
     footballDropDownList();
     let abtn=  document .getElementById('abtn');
@@ -23,8 +28,9 @@ function footballDropDownList(){
           locatedIn:"Kansas City, MO"
         }
       ];
-      let select=document.getElementById("footballTeams");
+     
    for(let i=0;i<teams.length;i++){
+    let select=document.getElementById("footballTeams");
     let option = new Option();
      option.text=teams[i].name;
      option.value=teams[i].teamcode;
@@ -35,5 +41,10 @@ function abtnClicked(){
     let selectOpt = document.getElementById('footballTeams');
     let value = selectOpt.value;
     let index=selectOpt.selectedIndex;
+    if(value==""||value==null||value==undefined){
+        document.getElementById('mess').innerHTML="";
+    }
+    else{
    document.getElementById('mess').innerHTML="You selected the "+selectOpt[index].text+'\t('+value+")";
+   }
 }
